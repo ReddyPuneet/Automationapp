@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+client/node_modules/
+
+# Build output
+client/build/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Credentials (NEVER commit these)
+*.pem
+*.key
+credentials.json
+service-account.json
+*-credentials.json
+secrets/
+
+# Optional: Comment out if you want to persist database in git
+# data/database.json

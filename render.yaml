@@ -1,0 +1,12 @@
+# Render.com deployment configuration
+services:
+  - type: web
+    name: automation-app
+    env: node
+    plan: free
+    buildCommand: npm run render-build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /health

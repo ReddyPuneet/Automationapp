@@ -11,7 +11,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*',
+  credentials: true
+}));
 app.use(express.json({ limit: '50mb' }));
 
 // API Routes
@@ -19,19 +22,26 @@ app.use('/api/workflows', workflowRoutes);
 app.use('/api/executions', executionRoutes);
 app.use('/webhook', webhookRoutes);
 
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 // Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-  });
-}
+const clientBuildPath = path.join(__dirname, '../client/build');
+app.use(express.static(clientBuildPath));
+
+// Handle React routing - serve index.html for all non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
+});
 
 // Initialize database and start server
 db.initialize();
 scheduler.initializeScheduledWorkflows();
 
-app.listen(PORT, () => {
-  console.log(`🚀 Automation Server running on http://localhost:${PORT}`);
-  console.log(`📡 Webhook endpoint: http://localhost:${PORT}/webhook/:workflowId`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Automation Server running on port ${PORT}`);
+  console.log(`📡 Webhook endpoint: /webhook/:workflowId`);
+  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
 });
