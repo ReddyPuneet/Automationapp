@@ -44,11 +44,7 @@ npm run server
 cd client && npm start
 ```
 
-### 3. Access the App
 
-- **Frontend**: http://localhost:3000
-- **API**: http://localhost:5000
-- **Webhooks**: http://localhost:5000/webhook/:workflowId
 
 ## How to Use
 
