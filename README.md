@@ -44,8 +44,6 @@ npm run server
 cd client && npm start
 ```
 
-
-
 ## How to Use
 
 ### Creating a Workflow
@@ -109,7 +107,7 @@ Click **"Executions"** in the sidebar to see:
 automation-app/
 ├── server/
 │   ├── index.js           # Express server
-│   ├── database.js        # SQLite database
+│   ├── database.js        # JSON file database
 │   ├── routes/
 │   │   ├── workflows.js   # Workflow CRUD
 │   │   ├── executions.js  # Execution history
@@ -127,7 +125,7 @@ automation-app/
 │       │   └── ExecutionList.js
 │       └── services/
 │           └── api.js
-└── data/                  # SQLite database
+└── data/                  # JSON database file
 ```
 
 ## API Endpoints
@@ -151,10 +149,11 @@ automation-app/
 
 ## Technologies
 
-- **Backend**: Node.js, Express, SQLite (better-sqlite3)
+- **Backend**: Node.js, Express
 - **Frontend**: React, React Flow
+- **Database**: JSON file (data/database.json)
 - **Scheduling**: node-cron
-- **Code Execution**: vm2 (sandboxed)
+- **Code Execution**: JavaScript Function constructor
 
 ## License
 
