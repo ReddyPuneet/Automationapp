@@ -106,16 +106,16 @@ Click **"Executions"** in the sidebar to see:
 ```
 automation-app/
 ├── server/
-│   ├── index.js           # Express server
-│   ├── database.js        # JSON file database
+│   ├── index.js           
+│   ├── database.js        
 │   ├── routes/
-│   │   ├── workflows.js   # Workflow CRUD
-│   │   ├── executions.js  # Execution history
-│   │   └── webhooks.js    # Webhook handlers
+│   │   ├── workflows.js   
+│   │   ├── executions.js  
+│   │   └── webhooks.js    
 │   └── services/
-│       ├── executor.js    # Workflow execution
-│       ├── scheduler.js   # Cron scheduling
-│       └── nodes/         # Node implementations
+│       ├── executor.js    
+│       ├── scheduler.js   
+│       └── nodes/         
 ├── client/
 │   └── src/
 │       ├── App.js
@@ -155,6 +155,3 @@ automation-app/
 - **Scheduling**: node-cron
 - **Code Execution**: JavaScript Function constructor
 
-## License
-
-MIT
